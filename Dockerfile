@@ -6,8 +6,8 @@ RUN chmod +x /bin/run.sh
 
 RUN yum update -y
 RUN yum install java-1.8.0-openjdk.x86_64 -y
-RUN yum install make git zip
-
+RUN yum install git zip maven -y
+RUN yum groupinstall "Development Tools" -y
 
 RUN yum install postgresql-server -y
 RUN su postgres -c "initdb -D /var/lib/pgsql/data"
@@ -16,3 +16,4 @@ RUN su postgres -c "initdb -D /var/lib/pgsql/data"
 EXPOSE 5432
 
 CMD ["/bin/run.sh"]
+
